@@ -1,23 +1,19 @@
 import React from 'react';
 import {
-  Image,
-  Linking,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-	TextInput,
 	FlatList
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import StoryComponent from '../components/StoryComponent';
 
 export default class HomeScreen extends React.Component {
   static route = {
     navigationBar: {
-      visible: false,
+      title: 'Home'
     },
   };
 
@@ -52,7 +48,13 @@ export default class HomeScreen extends React.Component {
 	}
 	
 	renderItem = ({item}) => (
-		<Text>{item.Companyname}</Text>
+    <StoryComponent
+      title={item.Companyname}
+      street={item.Street}
+      city={item.City}
+      web={item.Web}
+    />
+		// <Text>{item.Companyname}</Text>
 	)
 
   render() {
