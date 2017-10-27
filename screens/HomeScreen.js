@@ -9,6 +9,20 @@ export default class HomeScreen extends React.Component {
     },
   };
 
+  componentWillMount() {
+    fetch('https://tietojenkasittely.lapinamk.fi/bit16/ourstories_example/getCompanyAddress.php', {
+      method: 'post',
+      header: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body:JSON.stringify(({
+        key: 'test'
+      }))
+    }).then((response) => response.json())
+    .then((responseJson) => {this.setState({ companies: responseJson.companies})})
+  }
+
   render() {
     return (
       <View style={styles.container}>
